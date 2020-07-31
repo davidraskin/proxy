@@ -20,6 +20,7 @@ cc_proto_library(
     visibility = [
         "//extensions/stackdriver:__pkg__",
         "//extensions/stackdriver/metric:__pkg__",
+        "//extensions/stackdriver/log:__pkg__",
     ],
     deps = ["stackdriver_plugin_config_proto"],
 )

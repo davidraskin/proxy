@@ -37,7 +37,10 @@ using google::protobuf::util::TimeUtil;
 constexpr char kServerAccessLogName[] = "server-accesslog-stackdriver";
 
 Logger::Logger(const ::Wasm::Common::FlatNode& local_node_info,
-               std::unique_ptr<Exporter> exporter, int log_request_size_limit) {
+               std::unique_ptr<Exporter> exporter,
+               const stackdriver::config::v1alpha1::LogContent& log_content,
+               int log_request_size_limit)
+    : log_content_(log_content) {
   // Initalize the current WriteLogEntriesRequest.
   log_entries_request_ =
       std::make_unique<google::logging::v2::WriteLogEntriesRequest>();

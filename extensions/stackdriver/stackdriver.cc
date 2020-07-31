@@ -223,7 +223,7 @@ bool StackdriverRootContext::configure(size_t configuration_size) {
     logging_stub_option.default_endpoint = kLoggingService;
     auto exporter = std::make_unique<ExporterImpl>(this, logging_stub_option);
     // logger takes ownership of exporter.
-    logger_ = std::make_unique<Logger>(local_node, std::move(exporter));
+    logger_ = std::make_unique<Logger>(local_node, std::move(exporter), config_.get_log_content());
     tcp_log_entry_timeout_ = getTcpLogEntryTimeoutNanoseconds();
   }
 

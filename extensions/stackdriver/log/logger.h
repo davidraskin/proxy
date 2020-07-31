@@ -22,6 +22,9 @@
 #include "extensions/stackdriver/log/exporter.h"
 #include "google/logging/v2/logging.pb.h"
 
+// Log Content import
+#include "extensions/stackdriver/config/v1alpha1/stackdriver_plugin_config.pb.h"
+
 namespace Extensions {
 namespace Stackdriver {
 namespace Log {
@@ -39,6 +42,7 @@ class Logger {
   // https://cloud.google.com/logging/quotas.
   Logger(const ::Wasm::Common::FlatNode& local_node_info,
          std::unique_ptr<Exporter> exporter,
+         const stackdriver::config::v1alpha1::LogContent& log_cotent,
          int log_request_size_limit = 4000000 /* 4 Mb */);
 
   // Add a new log entry based on the given request information and peer node
@@ -92,6 +96,8 @@ class Logger {
 
   // Exporter calls Stackdriver services to export access logs.
   std::unique_ptr<Exporter> exporter_;
+
+  const stackdriver::config::v1alpha1::LogContent& log_content_;
 
   // GCP project that this proxy runs with.
   std::string project_id_;

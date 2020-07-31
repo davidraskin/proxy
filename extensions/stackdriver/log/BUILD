@@ -40,6 +40,7 @@ envoy_cc_library(
         "//extensions/common:context",
         "//extensions/stackdriver/common:constants",
         "//extensions/stackdriver/common:utils",
+        "//extensions/stackdriver/config/v1alpha1:stackdriver_plugin_config_cc_proto",
     ],
 )
 

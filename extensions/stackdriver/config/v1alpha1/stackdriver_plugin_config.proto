@@ -26,7 +26,6 @@ package stackdriver.config.v1alpha1;
 
 import "google/protobuf/duration.proto";
 import "google/protobuf/wrappers.proto";
-
 // next id: 10
 message PluginConfig {
   // Optional. Controls whether to export server access log.
@@ -71,4 +70,12 @@ message PluginConfig {
 
   // Optional. Allows enabling log compression for stackdriver access logs.
   google.protobuf.BoolValue enable_log_compression = 9;
+
+  //Optional. Defines the content of stackdriver log.
+  LogContent log_content = 10;
+}
+
+
+message LogContent {
+  map<string, string> labels = 1;
 }
